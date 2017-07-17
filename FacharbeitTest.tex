@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage[onehalfspacing]{setspace}
+\usepackage{url}
 \bibliographystyle{unsrt}
 
 \title{Das IEEE 802.15.4 MAC Protocol}
@@ -20,11 +21,43 @@
 \chapter{Einleitung}
 Im Laufe der letzten Jahre wurde die Technik für elektronische Geräte immer günstiger in der Herstellung und auch die Größe eben dieser konnte immer weiter reduziert werden. Diese Faktoren sorgen auch dafür, dass der Fokus nicht nur wie bisher, auf Mobiltelefonen und Computer beim Thema Vernetzung von elektronischen Geräten liegt, sondern immer mehr Sensoren und sogar Haushaltsgeräte miteinander kommunizieren können.
 Um alle erdenklichen Geräte mit einander kommunizieren lassen zu können, erfordert es allerdings einen Standard, der Regeln für den Informationsaustausch zwischen ihnen vorgibt. Ohne diese Festlegungen ist es nicht möglich unabhängig von der Art des Gerätes oder dem Hersteller eine Verbindung herzustellen.
-In dieser Arbeit soll es um diesen angesprochenen IEEE Standard gehen. Im speziellen wird das Augenmerk auf dem MAC Protokoll liegen. \cite{Karl2007}.
+In dieser Arbeit soll es um diesen angesprochenen IEEE Standard gehen. Im speziellen wird das Augenmerk auf dem MAC Protokoll liegen.
 
 \chapter{Der IEEE 802.15.4 Standard}
-Das IEEE 802.15.4 Protocol wurde in der ersten Version im Oktober 2003 veröffentlicht. Die aktuelle, dritte Version gibt es seit Ende 2015. 
-Ziel bei der Entwicklung des IEEE 802.15.4 Protocols war es einen einfachen Standard zu entwickeln, die eine Datenübertragung bei sehr niedriger Leistungsaufnahme und die Verwendung kostengünstiger Bauteile ermöglicht. Es gab vorher bereits die Standards IEEE 802.11 und Bluetooth. Diese sind jedoch verhältnismäßig sehr komplex und auch der Energiebedarf ist höher als bei dem IEEE 802.15.4  
+Das IEEE 802.15.4 Protocol wurde in der ersten Version im Oktober 2003 veröffentlicht. Die aktuelle, dritte Version gibt es seit Ende 2015. \cite{Karl2007}
+Ziel bei der Entwicklung des IEEE 802.15.4 Protocols war es einen einfachen Standard zu entwickeln, die eine Datenübertragung bei sehr niedriger Leistungsaufnahme und die Verwendung kostengünstiger Bauteile ermöglicht, um Drahtlose Sensornetzwerke aufzubauen, Hausautomation zu betreiben oder Geräte mit PCs zu verbinden. Es gab vorher bereits die Standards IEEE 802.11 und Bluetooth. Diese sind jedoch verhältnismäßig sehr komplex und auch der Energiebedarf ist höher als bei dem IEEE 802.15.4.
+\cite{WikiIEEE}
+
+Um die Kommunikation zwischen Devices herzustellen wird ein WPAN aufgebaut. WPAN steht für Wireless Personal Area Network und überbrückt Distanzen zwischen 20 Zentimeter und 50 Meter. Es deckt also nur das unmittelbare Umfeld, den "persönlichen Bereich". Davon wurde auch der Name abgeleitet.
+Der IEEE 802.15.4 Standard wird oft mit ZigBee verwechselt. ZigBee benutzt allerdings nur den IEEE Standard und erweitert ihn.
+Ein weiterer Vorteil liegt in der Nutzung der freien ISM-Bänder. Weltweit kann die 2,4 GHz Frequenz verwendet werden. Speziell in den USA steht die 900 MHz sowie in Deutschland die 800 MHz Frequenz zur Verfügung.
+Die übertragenen Datenraten belaufen sich auf nur 20 kb/s bis 250 kb/s, was aber dem Stromverbrauch zu Gute kommt.
+Wenn man das OSI-7-Schichten-Modell betrachtet, so deckt das IEEE 802.15.4 nur die untersten Beiden Schichten ab. Dabei handelt es sich um den Physical Layer sowie das MAC-Layer auf das später noch näher eingegangen wird.
+
+\chapter{Netzwerkarchitekturen}
+Das IEEE 802.15.4 unterscheidet zwei Gerätetypen: FFD und RFD.
+FFD steht für Full Function Device und kann als PAN Coordinator, einfacher Coordinator oder Device fungieren.
+RFD steht für Reduced Fanction Device. Dieses kann nur als Device operieren.
+Mit diesen beiden Arten von Geräten lassen sich nun komplexe Netzwerke aufbauen. Dabei gibt es aber natürlich vom IEEE 802.15.4 festgelegte Regeln.
+Ein device kann nur mit einem Coordinator oder PAN Coordinator kommunizieren und so eine Sterntopologie aufbauen. Coordinators können via Peer-to-Peer miteinander verbunden werden. Verschiedene Coordinators mit den verbunden Devices bilden so ein Personal Area Network (PAN).
+Die Coordinators haben mehrere Aufgaben, die im Folgenden kurz erläutert werden.
+Zum einen verwaltet ein Coordinator eine Liste mit verbundenen Devices und vergibt kurze Adressen für sie um die Kommunikation zu verbessern und Adressierungsprobleme zu umgehen.
+Des weiteren wird im beconed mode regelmäßig ein frame beacon verschickt. Zuletzt, verschickt es auch Datenpakete an Devices und andere Coordinators.
+
+Das PAN ist über einen PAN Identfier identifizierbar, der von dem PAN Coordinator bereitgestellt wird. Die Kommunikation nach außen kann nur von diesem PAN Coordinator übernommen werden. Es gibt auch nur einen in jedem Personal Area Network. 
+
+
+
+\chapter{Das MAC Protokoll}
+Das MAC Layer umfasst grundsätzlich Netzwerkprotokolle und Bauteile, die regeln, wie mehrere Rechner sich ein Medium teilen, auf das sie alle zugreifen wollen, um Daten übertragen zu können. Denn wenn mehrere Daten gleichzeitig auf einem Medium transportiert werden, kommt es zu einer Kollision und die Daten gehen verloren.
+
+\chapter{Das CSMA/CA Verfahren}
+
+\chapter{Das Superframe}
+
+\chapter{Sicherheit}
+
+\chapter{Zusammenfassung}
 
 
 

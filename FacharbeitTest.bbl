@@ -5,4 +5,8 @@ Holger Karl and Andreas Willig.
 \newblock {\em Protocols and Architectures for Wireless Sensor Networks -}.
 \newblock John Wiley \& Sons, New York, 1. aufl. edition, 2007.
 
+\bibitem{WikiIEEE}
+{Wikipedia} ieee 802.15.4.
+\newblock \url{https://de.wikipedia.org/wiki/IEEE_802.15.4}.
+
 \end{thebibliography}

@@ -10,4 +10,9 @@
   isbn      = {978-0-470-51923-3},
 }
 
+@Misc{WikiIEEE,
+  title        = {{Wikipedia} IEEE 802.15.4},
+  howpublished = {\url{https://de.wikipedia.org/wiki/IEEE_802.15.4}},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
