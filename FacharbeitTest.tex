@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{url}
+\usepackage{graphicx}
 \bibliographystyle{unsrt}
 
 \title{Das IEEE 802.15.4 MAC Protocol}
@@ -51,7 +52,33 @@ Das PAN ist über einen PAN Identfier identifizierbar, der von dem PAN Coordinat
 \chapter{Das MAC Protokoll}
 Das MAC Layer umfasst grundsätzlich Netzwerkprotokolle und Bauteile, die regeln, wie mehrere Rechner sich ein Medium teilen, auf das sie alle zugreifen wollen, um Daten übertragen zu können. Denn wenn mehrere Daten gleichzeitig auf einem Medium transportiert werden, kommt es zu einer Kollision und die Daten gehen verloren.
 
+Es gibt zwei Arten von Zugriffen um das Kollisionsproblem zu lösen. Zum Einen gibt es den konkurrierenden Zugriff und zum Anderen den kontrollierten Zugriff.
+Beim konkurrierenden Zugriff greift einfach jeder auf das Medium zu und wenn dann eine Kollision erkannt wird, treten Regeln in Kraft, die festlegen, wie weiter verfahren wird.
+\\
+
+Vergleichbar mit diesem Verfahren ist zum Beispiel eine Situation, bei der zwei Personen über ein Dosentelefon miteinander sprechen wollen. Das Medium ist hierbei der Faden zwischen den Dosen. Wenn beider Personen gleichzeitig sprechen, also eine Kollision stattfindet, hören beide Personen auf zu sprechen. Sie warten dann eine zufällige Zeit ab und wer daraufhin zuerst wieder beginnt, führt seine Erzählung weiter.
+Dieses Beispiel lässt sich als Vereinfachung auf das CSMA/CD Protokoll anwenden. CSMA/CD steht dabei für Carrier Sense Multiple Access with Collision Detection. 
+
+Bei dem IEEE 802.15.4 MAC Protocol wird allerdings der kontrollierte Zugriff verwendet mit dem CSMA/CA Verfahren. 
+
 \chapter{Das CSMA/CA Verfahren}
+Die Abkürzung CSMA/CA steht für Carrier Sense Multiple Access with Collision Avoidance. 
+Bei diesem Verfahren werden Regeln festgelegt, die entschieden wer auf das Medium zugreifen darf. Es darf nur Einer zur gleichen Zeit auf das Medium zugreifen.
+\\
+
+Als Beispiel lässt sich das Verfahren anhand einer Situation in der Schule veranschaulichen. Nachdem der Lehrer eine Frage in die Klasse gestellt hat, geben die Schüler und Schülerinnen, die die Frage beantworten können ein Handzeichen. Der Lehrer wählt dann einen Schüler aus, der reden darf. 
+Gäbe es die Selektion des Lehrers nicht, würden viele Schüler auf einmal sprechen und es würde zu Kollisionen kommen.
+
+Im folgenden wird mit Hilfe des Ablaufdiagramms erläutert, wie das Verfahren genauer funktioniert.
+
+Zuerst werden die drei Variablen initialisiert. 
+NB zählt die Anzahl der Backoffs, die zum Verschicken des Datenpakets benötigt werden. Sie wird mit 0 initialisiert. 
+CW steht für die Größe des aktuellen congestion window. Dieser Wert wird in diesem Beispiel auf 2 gesetzt. Die dritte Variable BE wird auf den Protokollparameter macMinBE gesetzt.
+
+Nach dem initialisieren der Variablen wird nun auf den nächsten Backoff-Zeitabschnitt gewartet. Ein Backoff ist eine Unterteilung eines Zeitabschnitts im Superframe.
+Dann wird eine zufällige Zeit gewartet bevor dann Versucht wird auf das Medium zuzugreifen.
+An dieser Stelle kann das Medium entweder frei sein oder es ist in diesem Moment bereits belegt. Wenn es frei ist CW um 1 verringert. Ist CW 0, gilt die Übertragung als erfolgreich. Wenn CW noch nicht 0 ist, wird erneut Versucht auf das Medium zuzugreifen.
+Es kann jedoch auch sein, dass das Medium bereits belegt ist. Dann wird NB um 1 erhöht und CW wieder auf den ursprünglichen Wert gesetzt. Wenn das Zeitfenster abgelaufen ist, gilt der Übertragungsversuch als gescheitert. Falls das Zeitfenster noch nicht abgelaufen ist, so wird nochmal versucht auf das Medium zuzugreifen.  
 
 \chapter{Das Superframe}
 
