@@ -1,0 +1,13 @@
+% Encoding: UTF-8
+
+@Book{Karl2007,
+  title     = {Protocols and Architectures for Wireless Sensor Networks -},
+  publisher = {John Wiley \& Sons},
+  year      = {2007},
+  author    = {Karl, Holger AND Willig, Andreas},
+  address   = {New York},
+  edition   = {1. Aufl.},
+  isbn      = {978-0-470-51923-3},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
